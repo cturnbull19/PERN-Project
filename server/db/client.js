@@ -1,5 +1,10 @@
 const { Client } = require('pg');
-const dbName = 'workoutlibrary';
-const client = new Client(`postgres://localhost54321/${workoutlibrary}`);
+
+const connectionString = process.env.DATABASE_URL || 'https://localhost:54321/workoutlibrary';
+
+const client = new Client({
+  connectionString,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined,
+});
 
 module.exports = client;
