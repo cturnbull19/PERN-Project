@@ -1,4 +1,4 @@
-const client = require('./client');
+const client = require('../client');
 const util = require('util');
 
 // GET - /api/exercises - get all exercises
