@@ -26,7 +26,58 @@ async function getExercisesById(id) {
     }
 }
 
+//POST - /api/exercises - create new exercise
+async function createExercises(body) {
+    const { name, description, imgURL } = body;
+    try {
+        const { rows: [exercises] } = await client.query(`
+        INSERT INTO exercises(name, description, imgURL)
+        VALUES($1, $2, $3)
+        RETURNING *;
+        `, [name, description, imgURL]);
+        return exercises;
+    } catch (error) {
+        throw new Error('POST request did not work, try again :(')
+    }
+}
+
+//PUT - /api/exercises/:id - update a single exercise by id
+async function updateExercises(id, fields = {}) {
+    const setString = Object.keys(fields).map((key, index) => `"${key}"=$${index +1}`).join(', ');
+    if(setString.length === 0) {
+        return;
+    }
+    try{
+        const { rows: [exercises] } = await client.query(`
+        UPDATE exercises
+        SET ${setString}
+        WHERE id=${id}
+        RETURNING *;
+        `, Object.values(fields));
+        return exercises;
+    } catch (error) {
+        throw new Error('PUT request did not work, try again :(');
+    }
+}
+
+// DELETE - /api/exercises/:id - delete a single exercise by id
+async function deleteExercises(id) {
+    try {
+        const { rows: [exercises] } = await client.query(`
+        DELETE FROM exercises
+        WHERE id=$1
+        RETURNING *;
+        `, [id]);
+        return exercises;
+    } catch (error) {
+        throw new Error('DELETE request did not work, try again :(')
+    }
+}
+
 module.exports = {
     getAllExercises,
-    getExercisesById
+    getExercisesById,
+    createExercises,
+    updateExercises, 
+    deleteExercises
 }
