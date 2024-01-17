@@ -5,8 +5,8 @@ async function dropTables() {
     try {
         console.log('Dropping All Tables...');
         await client.query(`
+      DROP TABLE IF EXISTS users;
       DROP TABLE IF EXISTS membership;
-      DROP TABLE IF EXISTS clients;
       DROP TABLE IF EXISTS exercises;
     `);
     } catch (error) {
@@ -23,23 +23,24 @@ async function createTables() {
             id SERIAL PRIMARY KEY,
             type VARCHAR(50) NOT NULL,
             expiration DATE,
-            price INTEGER NOT NULL,
+            price INTEGER NOT NULL
         );
         CREATE TABLE users (
             id SERIAL PRIMARY KEY,
             first_name VARCHAR(255) NOT NULL,
             last_name VARCHAR(255) NOT NULL,
             email VARCHAR(300) UNIQUE NOT NULL,
-            membership_id INTEGER REFERENCES membership(id)
+            "membershipId" INTEGER REFERENCES membership(id)
         );
         CREATE TABLE exercises (
-            id SERIAL PRIMARY KEY
+            id SERIAL PRIMARY KEY,
             name VARCHAR(255) UNIQUE NOT NULL,
             description TEXT NOT NULL,
-            'imgURL' BYTEA DEFAULT './no-image.jpeg'
+            "imgURL" BYTEA DEFAULT './no-image.jpeg'
         );
     `);
     } catch (error) {
+        console.log('error creating tables')
         throw error;
     }
 }
@@ -49,30 +50,33 @@ async function createInitialData() {
     try {
         console.log('Creating Initial Data...');
         await client.query(`
-      INSERT INTO users (first_name, last_name, email)
-      VALUES
-        ('Caroline', 'Turnbull', 'carolinel@email.com'),
-        ('Annie', 'Turnbull', 'annie@email.com'),
-        ('Elizabeth', 'Tunbull', 'elizabeth@email.com'),
-        ('Doug', 'Turnbull', 'doug@email.com')
-        ('MJ', 'Turnbull', 'mj@email.com')`
-        );
-        await client.query(`
         INSERT INTO membership (type, expiration, price)
         VALUES
             ('ultimate', '2025-01-01', 250),
             ('student', '2024-06-01', 100),
             ('student', '2024-06-01', 100),
-            ('ultimate', '2025-01-01', 250)
+            ('ultimate', '2025-01-01', 250),
             ('teacher', '2025-01-01', 0)`
         );
+
         await client.query(`
-        INSERT INTO exercises (name, description, 'imgURL')
+        INSERT INTO users (first_name, last_name, email)
+        VALUES
+        ('Caroline', 'Turnbull', 'carolinel@email.com'),
+        ('Annie', 'Turnbull', 'annie@email.com'),
+        ('Elizabeth', 'Tunbull', 'elizabeth@email.com'),
+        ('Doug', 'Turnbull', 'doug@email.com'),
+        ('MJ', 'Turnbull', 'mj@email.com')`
+        );
+
+        await client.query(`
+        INSERT INTO exercises (name, description, "imgURL")
         VALUES
             ('squat', 'feet hip distance apart, engage your core, lower down as if sitting in an invisible chair, stop when knees are at about 90 degrees, straighten legs to stand back up.', './squat.png'),
             ('plank', 'Lying on the ground with the elbows in line with the shoulder and the feet shoulder width apart, Push your body up bearing the weight on the forearms and feet, Keeping your body straight', './plank.jpeg')`
         );
     } catch (error) {
+        console.log('error creating initial data')
         throw error;
     }
 }
