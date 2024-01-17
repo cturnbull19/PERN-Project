@@ -5,8 +5,9 @@ async function dropTables() {
     try {
         console.log('Dropping All Tables...');
         await client.query(`
-      DROP TABLE IF EXISTS videoGames;
-      DROP TABLE IF EXISTS boardGames;
+      DROP TABLE IF EXISTS membership;
+      DROP TABLE IF EXISTS clients;
+      DROP TABLE IF EXISTS exercises;
     `);
     } catch (error) {
         throw error;
@@ -18,26 +19,26 @@ async function createTables() {
     try {
         console.log('Building All Tables...');
         await client.query(`
-      CREATE TABLE clients (
-        id SERIAL PRIMARY KEY,
-        first_name VARCHAR(255) NOT NULL,
-        last_name VARCHAR(255) NOT NULL,
-        email VARCHAR(300) UNIQUE NOT NULL,
-        membership_id INT FOREIGN KEY REFERENCES membership(membership_id)
-        );
         CREATE TABLE membership (
-            membership_id SERIAL PRIMARY KEY,
+            id SERIAL PRIMARY KEY,
             type VARCHAR(50) NOT NULL,
             expiration DATE,
             price INTEGER NOT NULL,
-            );
-            CREATE TABLE exercises (
-                id SERIAL PRIMARY KEY
-                name VARCHAR(255) UNIQUE NOT NULL,
-                description TEXT NOT NULL,
-                'imgURL' BYTEA DEFAULT './no-image.jpeg'
-            );
-        `);
+        );
+        CREATE TABLE users (
+            id SERIAL PRIMARY KEY,
+            first_name VARCHAR(255) NOT NULL,
+            last_name VARCHAR(255) NOT NULL,
+            email VARCHAR(300) UNIQUE NOT NULL,
+            membership_id INTEGER REFERENCES membership(id)
+        );
+        CREATE TABLE exercises (
+            id SERIAL PRIMARY KEY
+            name VARCHAR(255) UNIQUE NOT NULL,
+            description TEXT NOT NULL,
+            'imgURL' BYTEA DEFAULT './no-image.jpeg'
+        );
+    `);
     } catch (error) {
         throw error;
     }
@@ -48,7 +49,7 @@ async function createInitialData() {
     try {
         console.log('Creating Initial Data...');
         await client.query(`
-      INSERT INTO clients (first_name, last_name, email)
+      INSERT INTO users (first_name, last_name, email)
       VALUES
         ('Caroline', 'Turnbull', 'carolinel@email.com'),
         ('Annie', 'Turnbull', 'annie@email.com'),

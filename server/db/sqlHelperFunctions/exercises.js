@@ -4,6 +4,7 @@ const util = require('util');
 // GET - /api/exercises - get all exercises
 async function getAllExercises() {
     try {
+        console.log(3)
         const { rows: exercises } = await client.query(`
         SELECT * FROM exercises;
         `);
@@ -31,7 +32,7 @@ async function createExercises(body) {
     const { name, description, imgURL } = body;
     try {
         const { rows: [exercises] } = await client.query(`
-        INSERT INTO exercises(name, description, imgURL)
+        INSERT INTO exercises(name, description, 'imgURL')
         VALUES($1, $2, $3)
         RETURNING *;
         `, [name, description, imgURL]);
