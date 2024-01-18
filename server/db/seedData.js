@@ -30,6 +30,7 @@ async function createTables() {
             first_name VARCHAR(255) NOT NULL,
             last_name VARCHAR(255) NOT NULL,
             email VARCHAR(300) UNIQUE NOT NULL,
+            password VARCHAR(255) NOT NULL,
             "membershipId" INTEGER REFERENCES membership(id)
         );
         CREATE TABLE exercises (
@@ -60,13 +61,13 @@ async function createInitialData() {
         );
 
         await client.query(`
-        INSERT INTO users (first_name, last_name, email)
+        INSERT INTO users (first_name, last_name, email, password)
         VALUES
-        ('Caroline', 'Turnbull', 'carolinel@email.com'),
-        ('Annie', 'Turnbull', 'annie@email.com'),
-        ('Elizabeth', 'Tunbull', 'elizabeth@email.com'),
-        ('Doug', 'Turnbull', 'doug@email.com'),
-        ('MJ', 'Turnbull', 'mj@email.com')`
+        ('Caroline', 'Turnbull', 'carolinel@email.com', 'apple'),
+        ('Annie', 'Turnbull', 'annie@email.com', 'cheese'),
+        ('Elizabeth', 'Tunbull', 'elizabeth@email.com', 'banana'),
+        ('Doug', 'Turnbull', 'doug@email.com', 'chocolate'),
+        ('MJ', 'Turnbull', 'mj@email.com', 'cherry')`
         );
 
         await client.query(`

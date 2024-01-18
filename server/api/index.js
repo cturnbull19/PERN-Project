@@ -8,6 +8,7 @@ router.get('/health', (req, res, next) => {
 
 //ROUTER: /api/exercises
 router.use('/exercises', require('./exercises'));
+router.use('/users', require('./users'));
 
 
 module.exports = router;
