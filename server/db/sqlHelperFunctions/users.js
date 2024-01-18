@@ -27,15 +27,16 @@ async function getAllUsers() {
     }
 }
 
-async function getUserByEmail() {
+async function getUserByEmail(email) {
     try {
-        const { rows: users } = await client.query(`
+        const { rows: user } = await client.query(`
         SELECT * FROM users
         WHERE users.email = '${email}'
         `);
-        return users;
+        return user;
     } catch (error) {
-        throw new Error('GET request by email did not work')
+        console.error('Error logging in user:', error);
+        throw new Error(`Failed to login user: ${error.message}`);
     }
 };
 

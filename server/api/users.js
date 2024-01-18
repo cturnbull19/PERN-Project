@@ -50,21 +50,29 @@ router.post('/register', async (req, res, next) => {
 router.post('/login', async (req, res, next) => {
     try {
         const { email, password } = req.body;
-        const user = await getUserByEmail(email);
-        const validPassword = await bcrypt.compare(password, user.password);
+        const users = await getUserByEmail(email);
 
-        if (validPassword) {
-            const token = jwt.sign(trainer, JWT_SECRET);
+        if (users.length === 1) {
+            const user = users[0];
+            const validPassword = await bcrypt.compare(password, user.password);
 
-            res.cookie('token', token, {
-                sameSite: 'strict',
-                httpOnly: true,
-                signed: true
-            });
+            if (validPassword) {
+                const token = jwt.sign(user, JWT_SECRET);
 
-            delete trainer.password;
+                res.cookie('token', token, {
+                    sameSite: 'strict',
+                    httpOnly: true,
+                    signed: true
+                });
 
-            res.send({ token, user });
+                delete user.password;
+
+                res.send({ token, user });
+            } else {
+                res.status(401).send({ error: 'Invalid password' });
+            }
+        } else {
+            res.status(401).send({ error: 'User not found' });
         }
     } catch (error) {
         console.log('error from post api router with login', error);
