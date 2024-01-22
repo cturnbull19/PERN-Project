@@ -4,7 +4,7 @@ import './index.css'
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Navigations from './components/Navigations'
-//import Login from './components/Login'
+import Login from './components/Login'
 import Register from './components/Register'
 //import Account from './components/Account'
 //import SingleExercise from './components/SingleExercise'
@@ -32,6 +32,7 @@ function App() {
           <Route path='/exercises' element = { <Exercises />}></Route>
           <Route path='/exercises/:exerciseId' element = { <SingleExercise />}></Route>
           <Route path='/register' element = { <Register />}/>
+          <Route path='/login' element = { <Login />}/>
         </Routes>
       </div>
     </>

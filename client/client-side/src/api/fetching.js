@@ -60,9 +60,18 @@ export const fetchingApi = createApi({
                 method: 'POST',
                 body: { ...data }
             })
+        }),
+
+        //login user
+        login: build.mutation({
+            query: (data) => ({
+                url: '/users/login',
+                method: 'POST', 
+                body: { ...data }
+            })
         })
 
     }),
 });
 
-export const { useGetExercisesQuery, useGetSingleExerciseQuery, useCreateExerciseMutation, useUpdateExerciseMutation, useDeleteExerciseMutation, useRegisterMutation } = fetchingApi
+export const { useGetExercisesQuery, useGetSingleExerciseQuery, useCreateExerciseMutation, useUpdateExerciseMutation, useDeleteExerciseMutation, useRegisterMutation, useLoginMutation } = fetchingApi
