@@ -36,6 +36,7 @@ const Exercises = () => {
                     <div className ='exercise-details'>
                         <h2> {exercise.name} </h2>
                         <p><strong>Description:</strong> {exercise.description} </p>
+                        <button type='submit'><Link to={`/exercises/${exercise.id}`}>See More</Link></button>
                     </div>
                 </div>
             ))}

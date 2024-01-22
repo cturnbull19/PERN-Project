@@ -9,6 +9,7 @@ import Navigations from './components/Navigations'
 //import Account from './components/Account'
 //import SingleExercise from './components/SingleExercise'
 import Exercises from './components/Exercises'
+import SingleExercise from './components/SingleExercise'
 
 function App() {
   const [token, setToken] = useState(null)
@@ -29,6 +30,7 @@ function App() {
           }>
           </Route>
           <Route path='/exercises' element = { <Exercises />}></Route>
+          <Route path='/exercises/:exerciseId' element = { <SingleExercise />}></Route>
         </Routes>
       </div>
     </>
