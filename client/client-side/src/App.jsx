@@ -7,7 +7,6 @@ import Navigations from './components/Navigations'
 import Login from './components/Login'
 import Register from './components/Register'
 //import Account from './components/Account'
-//import SingleExercise from './components/SingleExercise'
 import Exercises from './components/Exercises'
 import SingleExercise from './components/SingleExercise'
 
@@ -31,8 +30,8 @@ function App() {
           </Route>
           <Route path='/exercises' element = { <Exercises />}></Route>
           <Route path='/exercises/:exerciseId' element = { <SingleExercise />}></Route>
-          <Route path='/register' element = { <Register />}/>
-          <Route path='/login' element = { <Login />}/>
+          <Route path='/register' element = { <Register setToken={setToken} />}/>
+          <Route path='/login' element = { <Login setToken={setToken} />}/>
         </Routes>
       </div>
     </>

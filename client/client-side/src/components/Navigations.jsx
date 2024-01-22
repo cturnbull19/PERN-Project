@@ -8,17 +8,27 @@ const Navigations = () => {
     const dispatch = useDispatch();
     const token = useSelector((it) => it.actionsSlice.token);
 
-    //const handleLogOut = () => {
-        //dispatch(updateToken(''))
-        //navigate('/login')
-    //}
+    const handleLogOut = () => {
+        dispatch(updateToken(''))
+        navigate('/login')
+    }
 
     return (
         <div className='navBar'>
             <Link to='/'>Home</Link>
             <Link to='/exercises'>Exercise Library</Link>
-            <Link to='/register'>Register</Link>
-            <Link to='/login'>Login</Link>
+
+            {(!token) ? (
+                <>
+                <Link to='/register'>Register</Link>
+                <Link to='/login'>Login</Link>
+                </>
+            ) : (
+                <>
+                <button onClick={handleLogOut}>Logout</button>
+                </>
+
+            )}
         </div>
     )
 };

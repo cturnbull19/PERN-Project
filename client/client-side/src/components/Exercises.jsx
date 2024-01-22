@@ -10,11 +10,17 @@ const Exercises = () => {
     const token = useSelector((it) => it.actionsSlice.token);
 
     const { data, error, isLoading } = useGetExercisesQuery()
-    //input filter logic
-    //input search logic
-    //inpute search input logic
+    const [ filtered, setFiltered ] = useState([])
+    const [ searched, setSearched ] = useState(0)
+    const [ searchInput, setSearchInput ] = useState('')
 
-    //searchExercises function 
+    function searchExercises(event) {
+        event.preventDefault()
+        setSearched(searched + 1)
+        const filter = data.filter((exercise) => 
+            exercise.name.toLowerCase().includes(searchInput.toLowerCase()))
+        setFiltered(filter)
+    };
 
     //want a similar function to checkout, but to save exercises instead of books
     if (isLoading) {
@@ -25,24 +31,67 @@ const Exercises = () => {
         return <div> Error: {error.message} </div>
     }
 
-    return (
-        <>
-        <h1>Exercise Library</h1>
-
-        <div className='exercises'>
-            {data.map((exercise) => (
-                <div key={exercise.id} className='exercise-card-container'>
-                    <img className='exercise-image' src={exercise.imgURL} alt={exercise.name}></img>
-                    <div className ='exercise-details'>
-                        <h2> {exercise.name} </h2>
-                        <p><strong>Description:</strong> {exercise.description} </p>
-                        <button type='submit'><Link to={`/exercises/${exercise.id}`}>See More</Link></button>
+    if(!searched) {
+        return (
+            <>
+            <form className='searchBar' onSubmit={searchExercises}>
+                <label>
+                    Search Exercise by Name:
+                    <input
+                        type='search'
+                        value={searchInput}
+                        onChange={(event) => setSearchInput(event.target.value)}
+                    />
+                </label>
+                <button type='submit'>Search Exercise</button>
+            </form>
+            <h1>Exercise Library</h1>
+    
+            <div className='exercises'>
+                {data.map((exercise) => (
+                    <div key={exercise.id} className='exercise-card-container'>
+                        <img className='exercise-image' src={exercise.imgURL} alt={exercise.name}></img>
+                        <div className ='exercise-details'>
+                            <h2> {exercise.name} </h2>
+                            <p><strong>Description:</strong> {exercise.description} </p>
+                            <button type='submit'><Link to={`/exercises/${exercise.id}`}>See More</Link></button>
+                        </div>
                     </div>
-                </div>
-            ))}
-        </div> 
-        </>
-    )
+                ))}
+            </div> 
+            </>
+        )
+    } if(searched >0 && filtered.length >0){
+        return (
+            <>
+            <form onSubmit={searchExercises}>
+                <label>
+                    Search Exercise by Name:
+                    <input
+                        type='search'
+                        value={searchInput}
+                        onChange={(event) => setSearchInput(event.target.value)}
+                    />
+                </label>
+                <button type='submit'>Search Exercise</button>
+                {filtered.length != data.length ? <p className='searchResults'> Exercises Found: {filtered.length}</p> : ''}
+            </form>
+            <div className='exercises'>
+                {filtered.map((exercise) => (
+                    <div key={exercise.id} className='exercise-card-container'>
+                        <img className='exercise-image' src={exercise.imgURL} alt={exercise.name}></img>
+                        <div className ='exercise-details'>
+                            <h2> {exercise.name} </h2>
+                            <p><strong>Description:</strong> {exercise.description} </p>
+                            <button type='submit'><Link to={`/exercises/${exercise.id}`}>See More</Link></button>
+                        </div>
+                    </div>
+                ))}
+            </div> 
+            </>
+        )
+    }
+    
 }
 
 export default Exercises
