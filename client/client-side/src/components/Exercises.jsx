@@ -9,7 +9,7 @@ const Exercises = () => {
 
     const token = useSelector((it) => it.actionsSlice.token);
 
-    const { data = {}, error, isLoading } = useGetExercisesQuery()
+    const { data, error, isLoading } = useGetExercisesQuery()
     //input filter logic
     //input search logic
     //inpute search input logic
@@ -30,7 +30,7 @@ const Exercises = () => {
         <h1>Exercise Library</h1>
 
         <div className='exercises'>
-            {data.exercises.map((exercise) => (
+            {data.map((exercise) => (
                 <div key={exercise.id} className='exercise-card-container'>
                     <img className='exercise-image' src={exercise.imgURL} alt={exercise.name}></img>
                     <div className ='exercise-details'>
