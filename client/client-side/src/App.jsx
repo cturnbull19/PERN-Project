@@ -5,7 +5,7 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Navigations from './components/Navigations'
 //import Login from './components/Login'
-//import Register from './components/Register'
+import Register from './components/Register'
 //import Account from './components/Account'
 //import SingleExercise from './components/SingleExercise'
 import Exercises from './components/Exercises'
@@ -31,6 +31,7 @@ function App() {
           </Route>
           <Route path='/exercises' element = { <Exercises />}></Route>
           <Route path='/exercises/:exerciseId' element = { <SingleExercise />}></Route>
+          <Route path='/register' element = { <Register />}/>
         </Routes>
       </div>
     </>

@@ -52,7 +52,17 @@ export const fetchingApi = createApi({
                 },
             }),
         }),
+
+        //register user
+        register: build.mutation({
+            query: (data) => ({
+                url: '/users/register',
+                method: 'POST',
+                body: { ...data }
+            })
+        })
+
     }),
 });
 
-export const { useGetExercisesQuery, useGetSingleExerciseQuery, useCreateExerciseMutation, useUpdateExerciseMutation, useDeleteExerciseMutation } = fetchingApi
+export const { useGetExercisesQuery, useGetSingleExerciseQuery, useCreateExerciseMutation, useUpdateExerciseMutation, useDeleteExerciseMutation, useRegisterMutation } = fetchingApi
