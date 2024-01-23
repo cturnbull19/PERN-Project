@@ -8,6 +8,7 @@ async function dropTables() {
       DROP TABLE IF EXISTS users;
       DROP TABLE IF EXISTS membership;
       DROP TABLE IF EXISTS exercises;
+      DROP TABLE IF EXISTS likes;
     `);
     } catch (error) {
         throw error;
@@ -39,6 +40,11 @@ async function createTables() {
             description TEXT NOT NULL,
             "imgURL" BYTEA DEFAULT './no-image.jpeg'
         );
+        CREATE TABLE likes (
+            id SERIAL PRIMARY KEY,
+            exerciseId INTEGER REFERENCES exercises(id),
+            userId INTEGER REFERENCES users(id)
+        )
     `);
     } catch (error) {
         console.log('error creating tables')

@@ -10,6 +10,7 @@ router.get('/health', (req, res, next) => {
 router.use('/exercises', require('./exercises'));
 router.use('/users', require('./users'));
 router.use('/membership', require('./memberships'));
+router.use('/likes', require('./likes'));
 
 
 module.exports = router;

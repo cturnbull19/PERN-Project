@@ -10,7 +10,8 @@ async function getAllExercises() {
         `);
         return exercises;
     } catch (error) {
-        throw new Error('GET request did not work, try again :(')
+        console.error('Error getting exercise', error);
+        throw new Error(`Failed to get exercise: ${error.message}`)
     }
 }
 

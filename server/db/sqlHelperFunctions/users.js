@@ -1,6 +1,6 @@
 const client = require('../client')
 
-//POST - /api/users - create new user
+//POST - /api/users/register - create new user
 async function createUser(body) {
     const { first_name, last_name, email, password } = body;
     try {
