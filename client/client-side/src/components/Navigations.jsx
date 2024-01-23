@@ -26,6 +26,7 @@ const Navigations = () => {
             ) : (
                 <>
                 <button onClick={handleLogOut}>Logout</button>
+                <Link to='workoutBuilder'>WorkoutBuilder</Link>
                 </>
 
             )}

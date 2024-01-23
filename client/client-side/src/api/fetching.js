@@ -21,7 +21,7 @@ export const fetchingApi = createApi({
                 url: '/exercises',
                 method: 'POST',
                 headers: {
-                    'content-type': 'applicaiton.json',
+                    'content-type': 'application/json',
                     authorization: `Bearer ${data.token}`,
                     body: { ...data }
                 }
@@ -34,7 +34,7 @@ export const fetchingApi = createApi({
                 url: `/exercises/${data.id}`,
                 method: 'PUT',
                 headers: {
-                    'content-type': 'application.json',
+                    'content-type': 'application/json',
                     authorization: `Bearer ${data.token}`,
                 body: { available: false }
                 }
@@ -69,9 +69,26 @@ export const fetchingApi = createApi({
                 method: 'POST', 
                 body: { ...data }
             })
+        }),
+
+        //list liked exercises
+        listLikes: build.mutation({
+            query: (id) => ({
+            url:`/likes/user/${id}`,
+            method: 'GET'
+            })
+        }),
+
+        //like an exercise
+        like: build.mutation({
+            query: (data) => ({
+                url: `/likes/${data.id}/add`,
+                method: 'POST',
+                body: { userId: data.userId }
+            })
         })
 
-    }),
+    })
 });
 
-export const { useGetExercisesQuery, useGetSingleExerciseQuery, useCreateExerciseMutation, useUpdateExerciseMutation, useDeleteExerciseMutation, useRegisterMutation, useLoginMutation } = fetchingApi
+export const { useGetExercisesQuery, useGetSingleExerciseQuery, useCreateExerciseMutation, useUpdateExerciseMutation, useDeleteExerciseMutation, useRegisterMutation, useLoginMutation, useListLikesMutation, useLikeMutation} = fetchingApi

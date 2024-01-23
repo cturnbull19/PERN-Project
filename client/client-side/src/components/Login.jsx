@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useLoginMutation } from '../api/fetching'
-import { updateToken } from '../actions/actionsSlice'
+import { updateToken, updateUserId } from '../actions/actionsSlice'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
@@ -17,6 +17,7 @@ const Login = () => {
         try {
             const result = await login({ email, password });
             dispatch(updateToken(result.data.token))
+            dispatch(updateUserId(result.data.user.id))
         } catch (error) {
             console.error(error);
         }
