@@ -10,6 +10,7 @@ const { authRequired } = require('./utils');
 router.post('/:id/add', async (req, res, next) => {
     try {
         const like = await addLike(req.body.userId, req.params.id);
+        console.log(like);
         res.send(like);
     } catch (error) {
         next(error)

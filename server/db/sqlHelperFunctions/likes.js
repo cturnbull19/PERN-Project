@@ -17,8 +17,11 @@ async function addLike(userId, exerciseId) {
 
 async function removeLike(userId, exerciseId) {
     try {
+        console.log(userId, exerciseId)
         const { rows: likes } = await client.query(`
-        DELETE FROM likes WHERE userId=$1 AND exerciseId=$2 RETURNING *
+        DELETE FROM likes 
+        WHERE userId=$1 AND exerciseId=$2 
+        RETURNING *
         `, [userId, exerciseId]);
         return likes;
     } catch (error) {
@@ -28,11 +31,20 @@ async function removeLike(userId, exerciseId) {
 
 async function getLikesByUserId(userId) {
     try {
+        const returnList = [] 
         const { rows: likes } = await client.query(`
-        SELECT * FROM likes WHERE userId=$1  
+        SELECT * FROM likes WHERE userId=$1
         `, [userId]);
-        return likes;
+        const { rows: exercises } = await client.query(`
+        SELECT * FROM exercises
+        `, []);
+        for(const like of likes ) { 
+            const exercise = exercises.find(it => it.id === like.exerciseid)           
+            returnList.push({likeId: like.id, ...exercise})
+        }
+        return returnList;
     } catch (error) {
+        console.log(error)
         throw new Error('fetching all liked exercises did not work, try again :(');
     }
 }
