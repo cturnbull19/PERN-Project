@@ -5,10 +5,10 @@ async function dropTables() {
     try {
         console.log('Dropping All Tables...');
         await client.query(`
-      DROP TABLE IF EXISTS users;
-      DROP TABLE IF EXISTS membership;
-      DROP TABLE IF EXISTS exercises;
-      DROP TABLE IF EXISTS likes;
+      DROP TABLE IF EXISTS membership CASCADE;
+      DROP TABLE IF EXISTS likes CASCADE;
+      DROP TABLE IF EXISTS exercises CASCADE;
+      DROP TABLE IF EXISTS users CASCADE;
     `);
     } catch (error) {
         throw error;
@@ -38,7 +38,7 @@ async function createTables() {
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) UNIQUE NOT NULL,
             description TEXT NOT NULL,
-            "imgURL" BYTEA DEFAULT './no-image.jpeg'
+            "imgURL" VARCHAR(255)
         );
         CREATE TABLE likes (
             id SERIAL PRIMARY KEY,
@@ -79,8 +79,8 @@ async function createInitialData() {
         await client.query(`
         INSERT INTO exercises (name, description, "imgURL")
         VALUES
-            ('squat', 'feet hip distance apart, engage your core, lower down as if sitting in an invisible chair, stop when knees are at about 90 degrees, straighten legs to stand back up.', './squat.png'),
-            ('plank', 'Lying on the ground with the elbows in line with the shoulder and the feet shoulder width apart, Push your body up bearing the weight on the forearms and feet, Keeping your body straight', './plank.jpeg')`
+            ('squat', 'feet hip distance apart, engage your core, lower down as if sitting in an invisible chair, stop when knees are at about 90 degrees, straighten legs to stand back up.', 'squat.png'),
+            ('plank', 'Lying on the ground with the elbows in line with the shoulder and the feet shoulder width apart, Push your body up bearing the weight on the forearms and feet, Keeping your body straight', 'plank.jpeg')`
         );
     } catch (error) {
         console.log('error creating initial data')
