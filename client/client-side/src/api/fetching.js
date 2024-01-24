@@ -100,4 +100,4 @@ export const fetchingApi = createApi({
     })
 });
 
-export const { useGetExercisesQuery, useGetSingleExerciseQuery, useCreateExerciseMutation, useUpdateExerciseMutation, useDeleteExerciseMutation, useRegisterMutation, useLoginMutation, useListLikesMutation, useLikeMutation, useRemoveLikeMutation} = fetchingApi
+export const { useGetExercisesQuery, useGetSingleExerciseQuery, useCreateExerciseMutation, useUpdateExerciseMutation, useDeleteExerciseMutation, useRegisterMutation, useLoginMutation, useListLikesMutation, useLikeMutation, useRemoveLikeMutation } = fetchingApi

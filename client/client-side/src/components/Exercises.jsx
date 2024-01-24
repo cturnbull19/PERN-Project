@@ -43,6 +43,7 @@ const Exercises = () => {
     }
 
     if(!searched) {
+
         return (
             <>
             <form className='searchBar' onSubmit={searchExercises}>
@@ -61,7 +62,7 @@ const Exercises = () => {
             <div className='exercises'>
                 {data.map((exercise) => (
                     <div key={exercise.id} className='exercise-card-container'>
-                        <img className='exercise-image' src={exercise.imgURL} alt={exercise.name}></img>
+                        <img className='exercise-image' src={new URL(`../assets/images/${exercise.imgURL}`, import.meta.url).href} alt={exercise.name}></img>
                         <div className ='exercise-details'>
                             <h2> {exercise.name} </h2>
                             <p><strong>Description:</strong> {exercise.description} </p>
@@ -93,7 +94,8 @@ const Exercises = () => {
             <div className='exercises'>
                 {filtered.map((exercise) => (
                     <div key={exercise.id} className='exercise-card-container'>
-                        <img className='exercise-image' src={exercise.imgURL} alt={exercise.name}></img>
+                        <img className='exercise-image' src=
+                        {new URL(`../assets/images/${exercise.imgURL}`, import.meta.url).href} alt={exercise.name}></img>
                         <div className ='exercise-details'>
                             <h2> {exercise.name} </h2>
                             <p><strong>Description:</strong> {exercise.description} </p>
