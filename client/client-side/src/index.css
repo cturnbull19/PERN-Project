@@ -1,68 +1,110 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  box-sizing: border-box;
+  font-family: Raleway;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+html, body {
   margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: rgba(181, 76, 23, 0.143);
+}
+
+.searchBar {
+  padding: 5px;
+}
+
+.header {
+  height: 100px;
+  background-color: rgba(77, 74, 74, 0.4);
+  color:#fff5ee
+}
+
+.exercises {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-wrap: wrap;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.exercise-details {
+  padding: 4px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.exercise-card-container {
+  border-style: solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  margin: 10px;
+  border-color: #edad8d94;
+  border-width: 4px;
+  background-color: #fff5ee;
+  padding: 5px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.exerciseId {
+  border-style: solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  margin: 5px;
+  background-color: #fff5ee;
 }
+
+.register-container {
+  display: grid;
+  align-self: center;
+  place-content: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  row-gap: 1em;
+  border-style: solid;
+  background-color:#fff5ee;
+  border-color:black;
+  border-width: 1px;
+  padding: 5px;
+  width: 60%;
+  padding-left:10px;
+}
+
+
+.form-container {
+  padding-left: 25%;
+ }
+ 
+ .register-container button {
+   width: 100px;
+ }
+ 
+ a {
+   text-decoration: none;
+   color:black;
+ }
+ 
+ .navBar a {
+   color:#fff5ee;
+   text-decoration: none;
+   text-align: center;
+ }
+ 
+ a:hover {
+   background-color: rgb(224, 215, 160, .5);
+ }
+ 
+ .navBar {
+   display:grid;
+   align-items: center;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   grid-template-rows: 1fr;
+   row-gap: 1em;
+   border-style: solid;
+   background-color: rgb(128, 128, 128, .4);
+   border-color:black;
+   border-width: 1px;
+   padding: 5px;
+ }

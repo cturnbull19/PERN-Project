@@ -86,9 +86,18 @@ export const fetchingApi = createApi({
                 method: 'POST',
                 body: { userId: data.userId }
             })
+        }),
+
+        //remove like
+        removeLike: build.mutation({
+            query: (data) =>({
+                url: `/likes/${data.id}/delete`,
+                method: 'DELETE',
+                body: { userId: data.userId}
+            })
         })
 
     })
 });
 
-export const { useGetExercisesQuery, useGetSingleExerciseQuery, useCreateExerciseMutation, useUpdateExerciseMutation, useDeleteExerciseMutation, useRegisterMutation, useLoginMutation, useListLikesMutation, useLikeMutation} = fetchingApi
+export const { useGetExercisesQuery, useGetSingleExerciseQuery, useCreateExerciseMutation, useUpdateExerciseMutation, useDeleteExerciseMutation, useRegisterMutation, useLoginMutation, useListLikesMutation, useLikeMutation, useRemoveLikeMutation} = fetchingApi

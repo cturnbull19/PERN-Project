@@ -98,6 +98,9 @@ const Exercises = () => {
                             <h2> {exercise.name} </h2>
                             <p><strong>Description:</strong> {exercise.description} </p>
                             <button type='submit'><Link to={`/exercises/${exercise.id}`}>See More</Link></button>
+                            <button onClick = {() => {
+                                handleLike(exercise.id)
+                            }}>Like</button>
                         </div>
                     </div>
                 ))}

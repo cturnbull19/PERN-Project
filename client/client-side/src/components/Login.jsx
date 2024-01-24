@@ -17,6 +17,7 @@ const Login = () => {
         try {
             const result = await login({ email, password });
             dispatch(updateToken(result.data.token))
+            console.log(result.data.user.id)
             dispatch(updateUserId(result.data.user.id))
         } catch (error) {
             console.error(error);

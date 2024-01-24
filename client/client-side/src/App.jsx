@@ -17,8 +17,10 @@ function App() {
   return (
     <>
       <div>
-        <h4>Turnbull Training</h4>
-        <Navigations token={token}/>
+        <header className='header'>
+          <h4>Turnbull Training</h4>
+          <Navigations token={token}/>
+        </header>
       </div>
       <div>
         <Routes>
