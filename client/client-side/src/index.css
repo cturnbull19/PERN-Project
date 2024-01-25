@@ -11,7 +11,8 @@ html, body {
 }
 
 body{
-  background-color: rgba(181, 76, 23, 0.143);
+  background-color: #faf6f2;
+  color:#683b2b;
 }
 
 .searchBar {
@@ -20,8 +21,8 @@ body{
 
 .header {
   height: 100px;
-  background-color: rgba(77, 74, 74, 0.4);
-  color:#fff5ee
+  background-color: #d49e8d;
+  color:#683b2b;
 }
 
 .exercises {
@@ -36,14 +37,14 @@ body{
 .exercise-card-container {
   border-style: solid;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
+  height: 400px;
+  width: 700px;
   margin: 10px;
-  border-color: #edad8d94;
+  border-color: rgb(128, 128, 128, .4);
   border-width: 4px;
-  background-color: #fff5ee;
+  background-color: #d49e8d;
   padding: 5px;
+  color: rgb(255, 255, 255);
 }
 
 .exerciseId {
@@ -51,9 +52,13 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 500px;
+  width: 800px;
   margin: 5px;
   background-color: #fff5ee;
+}
+
+.exerciseId img {
+  width: 500px;
 }
 
 .register-container {
@@ -108,3 +113,8 @@ body{
    border-width: 1px;
    padding: 5px;
  }
+
+ img {
+  width: 400px;
+  padding: 5px;
+}

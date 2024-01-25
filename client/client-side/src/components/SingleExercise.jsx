@@ -16,7 +16,7 @@ const SingleExercise = () => {
     return(
         <>
             <div key={data.id} className='exerciseId'>
-                <img className='exercise-image' src={data.imgURL} alt={data.name}></img>
+                <img className='exercise-image' src={new URL(`../assets/images/${data.imgURL}`, import.meta.url).href} alt={data.name}></img>
                 <div className='exercise-details'>
                     <h2>{data.name}</h2>
                     <p><strong>Description: </strong>{data.description}</p>
