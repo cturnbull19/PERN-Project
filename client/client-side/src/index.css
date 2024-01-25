@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 
-* {
+/*  {
   box-sizing: border-box;
   font-family: Raleway;
 }
@@ -20,7 +20,7 @@ body{
 }
 
 .header {
-  height: 100px;
+  height: 80px;
   background-color: #d49e8d;
   color:#683b2b;
 }
@@ -127,4 +127,8 @@ img:hover {
 
 .intro-paragraph {
 
+}  */
+
+section {
+  padding: 60px 0;
 }
