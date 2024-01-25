@@ -11,7 +11,7 @@ async function addLike(userId, exerciseId) {
         `, [userId, exerciseId]);
         return likes;
     } catch (error) {
-        throw new Error('adding like to exercise did not work, try again :(');
+        throw new Error(`adding like to exercise did not work because: ${error.message}`);
     }
 }
 
