@@ -51,7 +51,7 @@ export default function WorkoutBuilder() {
                             {reservations.map((exercise) => (
                                 <div key={exercise.likeId}>
                                     <h4>{exercise.name}</h4>
-                                    <img className='exerciseImage' src={exercise.imgURL} alt={exercise.name}></img>
+                                    <img className='exerciseImage' src={new URL(`../assets/images/${exercise.imgURL}`, import.meta.url).href} alt={exercise.name}></img>
                                     <button type ='submit'><Link to={`/exercises/${exercise.id}`}>See More</Link></button>
                                     <button onClick={() => handleRemoveLike(exercise.id)} type = 'submit'>Remove Like</button>
                                 </div>

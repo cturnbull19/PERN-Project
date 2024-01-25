@@ -26,9 +26,10 @@ function App() {
         <Routes>
           <Route path='/' element = {
             <div>
-              <h1>Welcome to the Fitness App of Your Dreams</h1>
-              <p>Welcome to FitFeline, the one-of-a-kind fitness app that combines the charm of cartoon cats with the world of fitness and exercise! Our unique app offers a variety of workout routines, yoga sessions, and meditation practices, all demonstrated through delightful and motivational cartoon cat animations. Whether you're a fitness enthusiast or just starting your journey towards a healthier lifestyle, FitFeline makes exercising fun and engaging. With our user-friendly interface, you can easily navigate through different workouts, track your progress, and set fitness goals, all while enjoying the playful antics of our cartoon cats. Perfect for cat lovers and fitness fans alike, FitFeline is here to inspire you to stay active, healthy, and happy, accompanied by your adorable, whiskered workout buddies!</p>
-              <p>Use the tabs above to navigate through the website</p>
+              <h1>Welcome to PurrfectFit</h1>
+              <div className='intro-paragraph'>
+                <p>Your go-to destination for fitness inspiration with a whimsical twist! Our innovative fitness website features an extensive library of exercises, each accompanied by delightful photo demonstrations performed by cartoon cats. Not only will you find a wide range of workouts suitable for all fitness levels, but you can also 'like' your favorite exercises and easily access them later in our user-friendly Workout Builder section. Whether you're looking to tone up, build strength, or increase flexibility, PurrfectFit provides a unique and engaging way to plan and track your fitness journey, all while enjoying the charming antics of our feline friends. Get ready to stretch, lift, and squat alongside our adorable cartoon cats, and make your workout routine more enjoyable than ever!</p>
+              </div>
             </div>
           }>
           </Route>

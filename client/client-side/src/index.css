@@ -117,4 +117,14 @@ body{
  img {
   width: 400px;
   padding: 5px;
+  box-shadow: 0 4px 6px 0 rgba(34, 60, 80, .16);
+  transition: all ease-in-out .2s;
+}
+
+img:hover {
+  box-shadow: 0 8px 12px 0 rgba(34,60,80,.16);
+}
+
+.intro-paragraph {
+
 }
