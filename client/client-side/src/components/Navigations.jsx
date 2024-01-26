@@ -21,7 +21,7 @@ const Navigations = () => {
                 </div>
                 <div>
                     <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#main-nav' aria-controls='main-nav' aria-expanded='false' aria-label='Toggle Navigation'>
-                        <span class='navbar-toggler-icon'></span>
+                        <span className='navbar-toggler-icon'></span>
                     </button>
                     <div className='collapse navbar-collapse justify-content-end align-center' id='main-nav'>
                         <div className='navbar-nav'>

@@ -57,23 +57,27 @@ const Exercises = () => {
                 </label>
                 <button type='submit'>Search Exercise</button>
             </form>
-            <h1>Exercise Library</h1>
-    
-            <div className='exercises'>
-                {data.map((exercise) => (
-                    <div key={exercise.id} className='exercise-card-container'>
-                        <img className='exercise-image' src={new URL(`../assets/images/${exercise.imgURL}`, import.meta.url).href} alt={exercise.name}></img>
-                        <div className ='exercise-details'>
-                            <h2> {exercise.name} </h2>
-                            <p><strong>Description:</strong> {exercise.description} </p>
-                            <button type='submit'><Link to={`/exercises/${exercise.id}`}>See More</Link></button>
-                            <button onClick = {() => {
-                                handleLike(exercise.id)
-                            }}>Like</button>
+            <div className='container-lg'>
+                <div className='text-center'>
+                    <h1>Exercise Library</h1>
+                </div>
+                <div className='row row-cols-sm-1 row-cols-md-4 g-4'>
+                    {data.map((exercise) => (
+                        <div className='col-9 col-lg-6 p-2' key={exercise.id}>
+                            <div className='card border-2 h-100'>
+                                <img className='card-img-top' src={new URL(`../assets/images/${exercise.imgURL}`, import.meta.url).href} alt={exercise.name}></img>
+                                <h2 className='card-title text-center'> {exercise.name} </h2>
+                                <p className='card-body text-center py-6'><strong>Description:</strong><span className='lead card-subtitle'> {exercise.description}</span> </p>
+                                <button className='btn btn-outline-dark' type='button' role='button'><Link className= 'nav-link' to={`/exercises/${exercise.id}`}>See More</Link></button>
+                                <button className= 'btn btn-outline-success' onClick = {() => {
+                                    handleLike(exercise.id)
+                                }}>Like</button>
+                            </div>
                         </div>
-                    </div>
-                ))}
-            </div> 
+                    ))}
+                      
+                </div> 
+            </div>
             </>
         )
     } if(searched >0 && filtered.length >0){
@@ -91,21 +95,23 @@ const Exercises = () => {
                 <button type='submit'>Search Exercise</button>
                 {filtered.length != data.length ? <p className='searchResults'> Exercises Found: {filtered.length}</p> : ''}
             </form>
-            <div className='exercises'>
-                {filtered.map((exercise) => (
-                    <div key={exercise.id} className='exercise-card-container'>
-                        <img className='exercise-image' src=
-                        {new URL(`../assets/images/${exercise.imgURL}`, import.meta.url).href} alt={exercise.name}></img>
-                        <div className ='exercise-details'>
-                            <h2> {exercise.name} </h2>
-                            <p><strong>Description:</strong> {exercise.description} </p>
-                            <button type='submit'><Link to={`/exercises/${exercise.id}`}>See More</Link></button>
-                            <button onClick = {() => {
-                                handleLike(exercise.id)
-                            }}>Like</button>
+            <div className='container-lg'>
+                <div className='row row-cols-sm-1 row-cols-md-4 g-4'>
+                    {filtered.map((exercise) => (
+                        <div key={exercise.id} className='col-9 col-lg-6 p-2'>
+                            <div className='card border-2 h-100'>
+                                <img className='card-img-top' src=
+                                {new URL(`../assets/images/${exercise.imgURL}`, import.meta.url).href} alt={exercise.name}></img>
+                                <h2 className='card-title text-center'> {exercise.name} </h2>
+                                <p className='card-body text-center py-6'><strong>Description:</strong><span className='lead card-subtitle'> {exercise.description}</span></p>
+                                <button className='btn btn-outline-dark' type='button' role='button'><Link className= 'nav-link' to={`/exercises/${exercise.id}`}>See More</Link></button>
+                                <button className= 'btn btn-outline-success' onClick = {() => {
+                                    handleLike(exercise.id)
+                                }}>Like</button>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div> 
             </>
         )

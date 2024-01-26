@@ -32,44 +32,61 @@ const Register = () => {
         <>
             <h1>Register</h1>
             {error && <p>{error}</p>}
-            <div className='form-container'>
+            <div>
                 <form onSubmit={handleRegister} className='register-container'>
-                    <label>First Name: {''}
+                    <div className='form-floating mb-3'>
                         <input
+                            className='form-control'
+                            id='floatingInput'
                             type='text'
+                            placeholder='text'
                             value={first_name}
                             onChange= {(event) => {
                                 setFirst_Name(event.target.value)
                             }}
                         />
-                    </label>
-                    <label>Last Name: {''}
+                        <label htmlFor='floatingInput'>First Name: {''}</label>
+                    </div>
+                    
+                    <div className='form-floating mb-3'>
                         <input
+                            className='form-control'
                             type='text'
+                            placeholder='text'
                             value={last_name}
                             onChange= {(event) => {
                                 setLast_Name(event.target.value)
                             }}
                         />
-                    </label>
-                    <label>Email: {''}
+                        <label htmlFor='floatingInput'>Last Name: {''}</label>
+                    </div>
+
+                    <div className='form-floating mb-3'>
                         <input
-                            type='text'
+                            className='form-control'
+                            type='email'
+                            placeholder='name@email.com'
                             value={email}
                             onChange= {(event) => {
                                 setEmail(event.target.value)
                             }}
                         />
-                    </label>
-                    <label>Password: {''}
+                        <label htmlFor='floatingInput'>Email: {''}</label>
+                    </div>
+
+                    <div className='form-floating'>
                         <input
-                            type='text'
+                            className='form-control'
+                            type='password'
+                            id='floatingPassword'
+                            placeholder='password'
                             value={password}
                             onChange= {(event) => {
                                 setPassword(event.target.value)
                             }}
                         />
-                    </label>
+                        <label htmlFor='floatingPassword'>Password: {''}</label>
+                    </div>
                     {successMessage && <p>{successMessage}</p>}
                     <button type='submit'>
                         Register
