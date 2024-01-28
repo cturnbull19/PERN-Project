@@ -19,7 +19,7 @@ function App() {
     <>
       <div>
         <header className='header'>
-          <h4 className='display-5'>Turnbull Training</h4>
+          <h4 className='display-5'>PurrfectFit</h4>
           <Navigations token={token}/>
         </header>
       </div>
