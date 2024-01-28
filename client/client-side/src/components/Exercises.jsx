@@ -45,16 +45,20 @@ const Exercises = () => {
 
         return (
             <>
-            <form className='searchBar' onSubmit={searchExercises}>
-                <label>
-                    Search Exercise by Name:
-                    <input
+            <form onSubmit={searchExercises}>
+                <label for='searchBar' className='form-label p-2'>
+                    Search Exercise by Name: 
+                </label>
+                <input
+                        className='form-control-md'
+                        list='datalistOptions'
+                        id='searchBar'
+                        placeholder='Type to search...'
                         type='search'
                         value={searchInput}
                         onChange={(event) => setSearchInput(event.target.value)}
                     />
-                </label>
-                <button type='submit'>Search Exercise</button>
+                <button type='submit' class='btn btn-secondary btn-sm m-1'>Search Exercise</button>
             </form>
             <div className='container-lg'>
                 <div className='text-center'>
@@ -91,15 +95,19 @@ const Exercises = () => {
         return (
             <>
             <form onSubmit={searchExercises}>
-                <label>
-                    Search Exercise by Name:
-                    <input
+                <label for='searchBar' className='form-label p-2'>
+                    Search Exercise by Name: 
+                </label>
+                <input
+                        className='form-control-md'
+                        list='datalistOptions'
+                        id='searchBar'
+                        placeholder='Type to search...'
                         type='search'
                         value={searchInput}
                         onChange={(event) => setSearchInput(event.target.value)}
                     />
-                </label>
-                <button type='submit'>Search Exercise</button>
+                <button type='submit' class='btn btn-secondary btn-sm m-1'>Search Exercise</button>
                 {filtered.length != data.length ? <p className='searchResults'> Exercises Found: {filtered.length}</p> : ''}
             </form>
             <div className='container-lg'>
