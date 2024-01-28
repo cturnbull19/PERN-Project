@@ -65,7 +65,7 @@ const Register = () => {
                         <input
                             className='form-control'
                             type='email'
-                            placeholder='name@email.com'
+                            placeholder='email@email.com'
                             value={email}
                             onChange= {(event) => {
                                 setEmail(event.target.value)
@@ -88,7 +88,7 @@ const Register = () => {
                         <label htmlFor='floatingPassword'>Password: {''}</label>
                     </div>
                     {successMessage && <p>{successMessage}</p>}
-                    <button type='submit'>
+                    <button className='btn btn-secondary m-2' type='submit'>
                         Register
                     </button>
                 </form>

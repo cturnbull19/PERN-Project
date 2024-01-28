@@ -25,28 +25,36 @@ const Login = () => {
         navigate('/')
     }
     return (
-        <div className='loginPage'>
+        <div>
             <h1>Login</h1>
             {error && <p>{error}</p>}
-            <form onSubmit={handleLogin}>
-                <label>Email: {''}
+            <form onSubmit={handleLogin} className='register-container-'>
+                <div className='form-floating mb-3'>    
                     <input
-                        type='text'
+                        className='form-control'
+                        id='floatingEmail'
+                        placeholder='email@email.com'
+                        type='email'
                         onChange={(event) => {
                             setEmail(event.target.value)
                         }}
                     />
-                </label>
-                <label>Password: {''}
+                    <label htmlFor='floatingEmail'>Email: {''}</label>
+                </div>
+                <div className='form-floating'>
                     <input
-                        type='text'
+                        className='form-control'
+                        id='floatingPassword'
+                        type='password'
+                        placeholder='password'
                         onChange={(event) => {
                             setPassword(event.target.value)
                         }}
                     />
-                </label>
-                {successMessage && <p>{successMessage}</p>}
-                <button type='submit'>Login</button>
+                    <label htmlFor='floatingPassword'>Password: {''}</label>
+                    {successMessage && <p>{successMessage}</p>}
+                </div>
+                <button className='btn btn-secondary m-2' type='submit'>Login</button>
             </form>
         </div>
     )

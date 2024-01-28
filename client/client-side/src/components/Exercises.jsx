@@ -46,7 +46,7 @@ const Exercises = () => {
         return (
             <>
             <form onSubmit={searchExercises}>
-                <label for='searchBar' className='form-label p-2'>
+                <label htmlFor='searchBar' className='form-label p-2'>
                     Search Exercise by Name: 
                 </label>
                 <input
@@ -95,7 +95,7 @@ const Exercises = () => {
         return (
             <>
             <form onSubmit={searchExercises}>
-                <label for='searchBar' className='form-label p-2'>
+                <label htmlFor='searchBar' className='form-label p-2'>
                     Search Exercise by Name: 
                 </label>
                 <input

@@ -47,13 +47,16 @@ export default function WorkoutBuilder() {
                     <>
                     <div>
                         <h3>Liked Exercises</h3>
-                        <div>
+                        <div className='row row-cols-sm-1 row-cols-md-4 g-4'>
                             {reservations.map((exercise) => (
-                                <div key={exercise.likeId}>
-                                    <h4>{exercise.name}</h4>
-                                    <img className='exerciseImage' src={new URL(`../assets/images/${exercise.imgURL}`, import.meta.url).href} alt={exercise.name}></img>
-                                    <button type ='submit'><Link to={`/exercises/${exercise.id}`}>See More</Link></button>
-                                    <button onClick={() => handleRemoveLike(exercise.id)} type = 'submit'>Remove Like</button>
+                                <div className='col-9 col-lg-6 p-2' key={exercise.likeId}>
+                                    <div className='card border-2 h-100'>
+                                        <img className='card-img-top' src={new URL(`../assets/images/${exercise.imgURL}`, import.meta.url).href} alt={exercise.name}></img>
+                                        <h4 className='card-title text-center'>{exercise.name}</h4>
+                                        <p className='card-body text-center py-6'> {exercise.description}</p>
+                                        <button className='btn btn-outline-dark' type ='submit'><Link className='nav-link' to={`/exercises/${exercise.id}`}>See More</Link></button>
+                                        <button className='btn btn-outline-danger' onClick={() => handleRemoveLike(exercise.id)} type = 'submit'>Remove Like</button>
+                                    </div>
                                 </div>
                             ))}
                         </div>
