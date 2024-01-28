@@ -1,7 +1,6 @@
 const client = require('../client');
 const util = require('util');
 
-//PATCH (?) 
 async function addLike(userId, exerciseId) {
     try{
         const { rows: likes } = await client.query(`
