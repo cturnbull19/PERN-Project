@@ -24,7 +24,6 @@ const Exercises = () => {
         setFiltered(filter)
     };
 
-    //want a similar function to checkout, but to save exercises instead of books
     async function handleLike(id) {
         try {
         console.log(id, userId)
@@ -69,9 +68,17 @@ const Exercises = () => {
                                 <h2 className='card-title text-center'> {exercise.name} </h2>
                                 <p className='card-body text-center py-6'><strong>Description:</strong><span className='lead card-subtitle'> {exercise.description}</span> </p>
                                 <button className='btn btn-outline-dark' type='button' role='button'><Link className= 'nav-link' to={`/exercises/${exercise.id}`}>See More</Link></button>
-                                <button className= 'btn btn-outline-success' onClick = {() => {
+                                {(!token) ? (
+                                    <>
+                                    <button className='btn btn-outline-dark' type='button' role='buton'><Link className='nav-link' to='/login'>Login to Like Exercise</Link></button>
+                                    </>
+                                ): (
+                                    <>
+                                    <button className= 'btn btn-outline-success' onClick = {() => {
                                     handleLike(exercise.id)
-                                }}>Like</button>
+                                    }}>Like</button>
+                                    </>
+                                )}
                             </div>
                         </div>
                     ))}
@@ -105,9 +112,18 @@ const Exercises = () => {
                                 <h2 className='card-title text-center'> {exercise.name} </h2>
                                 <p className='card-body text-center py-6'><strong>Description:</strong><span className='lead card-subtitle'> {exercise.description}</span></p>
                                 <button className='btn btn-outline-dark' type='button' role='button'><Link className= 'nav-link' to={`/exercises/${exercise.id}`}>See More</Link></button>
-                                <button className= 'btn btn-outline-success' onClick = {() => {
+
+                                {(!token) ? (
+                                    <>
+                                    <button className='btn btn-outline-dark' type='button' role='buton'><Link className='nav-link' to='/login'>Login to Like Exercise</Link></button>
+                                    </>
+                                ): (
+                                    <>
+                                    <button className= 'btn btn-outline-success' onClick = {() => {
                                     handleLike(exercise.id)
-                                }}>Like</button>
+                                    }}>Like</button>
+                                    </>
+                                )}
                             </div>
                         </div>
                     ))}
