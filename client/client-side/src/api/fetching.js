@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const fetchingApi = createApi({
     reducerPath: "fetchingApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:8080/api',
+        baseUrl: 'https://workoutbuilder.onrender.com/api',
     }),
 
     endpoints: (build) => ({
