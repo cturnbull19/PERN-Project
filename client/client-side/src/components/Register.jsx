@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useRegisterMutation } from '../api/fetching'
-import { updateToken } from '../actions/actionsSlice'
+import { updateToken, updateUserId } from '../actions/actionsSlice'
 import { Link } from 'react-router-dom'
 
 const Register = () => {
@@ -19,9 +19,9 @@ const Register = () => {
 
         try {
             const result = await register({ first_name, last_name, email, password });
-
             console.log(result)
             dispatch(updateToken(result.data.token))
+            dispatch(updateUserId(result.data.user.id))
         } catch (error) {
             console.error(error);
         }
